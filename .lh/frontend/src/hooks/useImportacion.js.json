@@ -1,0 +1,18 @@
+{
+    "sourceFile": "frontend/src/hooks/useImportacion.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1764444236981,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1764444236981,
+            "name": "Commit-0",
+            "content": "import { useState } from 'react';\r\nimport API from '../config/api';\r\n\r\nexport const useImportacion = () => {\r\n  const [loading, setLoading] = useState(false);\r\n  const [error, setError] = useState(null);\r\n\r\n  const cargarExcel = async (file) => {\r\n    setLoading(true);\r\n    setError(null);\r\n    try {\r\n      const formData = new FormData();\r\n      formData.append('file', file);\r\n\r\n      const response = await API.post('/importacion/upload', formData, {\r\n        headers: {\r\n          'Content-Type': 'multipart/form-data',\r\n        },\r\n      });\r\n\r\n      return {\r\n        success: true,\r\n        data: response.data,\r\n        preview: response.data.preview || [],\r\n        total: response.data.total || 0,\r\n      };\r\n    } catch (err) {\r\n      const errorMessage = err.response?.data?.error || 'Error al cargar archivo Excel';\r\n      setError(errorMessage);\r\n      return { success: false, error: errorMessage, preview: [], total: 0 };\r\n    } finally {\r\n      setLoading(false);\r\n    }\r\n  };\r\n\r\n  const guardarImportacion = async (datosFicha, aprendices) => {\r\n    setLoading(true);\r\n    setError(null);\r\n    try {\r\n      const response = await API.post('/importacion/guardar', {\r\n        ficha: datosFicha,\r\n        aprendices,\r\n      });\r\n\r\n      return {\r\n        success: true,\r\n        data: response.data,\r\n      };\r\n    } catch (err) {\r\n      const errorMessage = err.response?.data?.error || 'Error al guardar importación';\r\n      setError(errorMessage);\r\n      return { success: false, error: errorMessage };\r\n    } finally {\r\n      setLoading(false);\r\n    }\r\n  };\r\n\r\n  const guardarMasivo = async (ficha, aprendices) => {\r\n    // No usar setLoading aquí para permitir múltiples llamadas en paralelo\r\n    try {\r\n      const response = await API.post('/importacion/guardar', {\r\n        ficha,\r\n        aprendices,\r\n      });\r\n\r\n      return {\r\n        success: true,\r\n        data: response.data,\r\n      };\r\n    } catch (err) {\r\n      const errorMessage = err.response?.data?.error || 'Error al guardar datos masivos';\r\n      return { success: false, error: errorMessage };\r\n    }\r\n  };\r\n\r\n  return {\r\n    loading,\r\n    error,\r\n    cargarExcel,\r\n    guardarImportacion,\r\n    guardarMasivo,\r\n  };\r\n};\r\n\r\n\r\n"
+        }
+    ]
+}

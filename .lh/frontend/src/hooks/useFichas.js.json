@@ -1,0 +1,18 @@
+{
+    "sourceFile": "frontend/src/hooks/useFichas.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1764453673510,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1764453673510,
+            "name": "Commit-0",
+            "content": "import { useState, useEffect } from 'react';\r\nimport API from '../config/api';\r\n\r\nexport const useFichas = () => {\r\n  const [fichas, setFichas] = useState([]);\r\n  const [loading, setLoading] = useState(false);\r\n  const [error, setError] = useState(null);\r\n\r\n  const fetchFichas = async () => {\r\n    setLoading(true);\r\n    setError(null);\r\n    try {\r\n      const response = await API.get('/fichas');\r\n      setFichas(response.data);\r\n      return { success: true, data: response.data };\r\n    } catch (err) {\r\n      const errorMessage = err.response?.data?.error || 'Error al cargar fichas';\r\n      setError(errorMessage);\r\n      return { success: false, error: errorMessage };\r\n    } finally {\r\n      setLoading(false);\r\n    }\r\n  };\r\n\r\n  const createFicha = async (fichaData) => {\r\n    setLoading(true);\r\n    setError(null);\r\n    try {\r\n      const response = await API.post('/admin/fichas', fichaData);\r\n      setFichas([...fichas, response.data]);\r\n      return { success: true, data: response.data };\r\n    } catch (err) {\r\n      const errorMessage = err.response?.data?.error || 'Error al crear ficha';\r\n      setError(errorMessage);\r\n      return { success: false, error: errorMessage };\r\n    } finally {\r\n      setLoading(false);\r\n    }\r\n  };\r\n\r\n  const updateFicha = async (id, fichaData) => {\r\n    setLoading(true);\r\n    setError(null);\r\n    try {\r\n      const response = await API.put(`/admin/fichas/${id}`, fichaData);\r\n      setFichas(fichas.map(ficha => ficha.id_ficha === id ? response.data.ficha : ficha));\r\n      return { success: true, data: response.data };\r\n    } catch (err) {\r\n      const errorMessage = err.response?.data?.error || 'Error al actualizar ficha';\r\n      setError(errorMessage);\r\n      return { success: false, error: errorMessage };\r\n    } finally {\r\n      setLoading(false);\r\n    }\r\n  };\r\n\r\n  const deleteFicha = async (id, forzar = false) => {\r\n    setLoading(true);\r\n    setError(null);\r\n    try {\r\n      const url = forzar ? `/admin/fichas/${id}?forzar=true` : `/admin/fichas/${id}`;\r\n      await API.delete(url);\r\n      setFichas(fichas.filter(ficha => ficha.id_ficha !== id));\r\n      return { success: true };\r\n    } catch (err) {\r\n      const errorData = err.response?.data;\r\n      const errorMessage = errorData?.message || errorData?.error || 'Error al eliminar ficha';\r\n      \r\n      // Si requiere confirmación, devolver info especial\r\n      if (errorData?.requiereConfirmacion) {\r\n        return { \r\n          success: false, \r\n          error: errorMessage,\r\n          requiereConfirmacion: true,\r\n          estudiantesAsociados: errorData.estudiantesAsociados\r\n        };\r\n      }\r\n      \r\n      setError(errorMessage);\r\n      return { success: false, error: errorMessage };\r\n    } finally {\r\n      setLoading(false);\r\n    }\r\n  };\r\n\r\n  useEffect(() => {\r\n    fetchFichas();\r\n  }, []);\r\n\r\n  return {\r\n    fichas,\r\n    loading,\r\n    error,\r\n    fetchFichas,\r\n    createFicha,\r\n    updateFicha,\r\n    deleteFicha,\r\n  };\r\n};\r\n\r\n\r\n"
+        }
+    ]
+}

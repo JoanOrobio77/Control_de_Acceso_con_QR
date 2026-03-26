@@ -1,0 +1,18 @@
+{
+    "sourceFile": "backend/src/routes/estudianteRoutes.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1763845104544,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1763845104544,
+            "name": "Commit-0",
+            "content": "const express = require('express');\r\nconst {\r\n  crearEstudiante,\r\n  obtenerEstudiantes,\r\n  obtenerEstudiantePorId,\r\n  actualizarEstudiante,\r\n  eliminarEstudiante,\r\n} = require('../controllers/estudianteController');\r\n\r\nconst router = express.Router();\r\n\r\n// Crear estudiante\r\nrouter.post('/', crearEstudiante);\r\n\r\n// Obtener todos\r\nrouter.get('/', obtenerEstudiantes);\r\n\r\n// Obtener por ID\r\nrouter.get('/:id', obtenerEstudiantePorId);\r\n\r\n// Actualizar\r\nrouter.put('/:id', actualizarEstudiante);\r\n\r\n// Eliminar\r\nrouter.delete('/:id', eliminarEstudiante);\r\n\r\nmodule.exports = router;\r\n\r\n"
+        }
+    ]
+}

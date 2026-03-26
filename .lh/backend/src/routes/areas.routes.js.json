@@ -1,0 +1,18 @@
+{
+    "sourceFile": "backend/src/routes/areas.routes.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1763849579392,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1763849579392,
+            "name": "Commit-0",
+            "content": "const express = require('express');\r\nconst router = express.Router();\r\nconst areaController = require('../controllers/areaController');\r\n\r\nrouter.get('/', areaController.obtenerAreas);\r\nrouter.post('/', areaController.crearArea);\r\nrouter.put('/:id', areaController.actualizarArea);\r\nrouter.delete('/:id', areaController.eliminarArea);\r\n\r\nmodule.exports = router;\r\n\r\n"
+        }
+    ]
+}

@@ -1,0 +1,18 @@
+{
+    "sourceFile": "backend/src/models/Registro_Acceso.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1763843472644,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1763843472644,
+            "name": "Commit-0",
+            "content": "const { DataTypes } = require('sequelize');\r\nconst sequelize = require('../config/db');\r\n\r\nconst Registro_Acceso = sequelize.define(\r\n  'Registro_Acceso',\r\n  {\r\n    id_registro: {\r\n      type: DataTypes.INTEGER,\r\n      primaryKey: true,\r\n      autoIncrement: true,\r\n    },\r\n    id_usuario: {\r\n      type: DataTypes.INTEGER,\r\n      allowNull: false,\r\n      references: {\r\n        model: 'Usuarios',\r\n        key: 'id_usuario',\r\n      },\r\n    },\r\n    id_area: {\r\n      type: DataTypes.INTEGER,\r\n      allowNull: false,\r\n      references: {\r\n        model: 'Areas',\r\n        key: 'id_area',\r\n      },\r\n    },\r\n    fecha: {\r\n      type: DataTypes.DATEONLY,\r\n      allowNull: false,\r\n    },\r\n    hora_entrada: {\r\n      type: DataTypes.TIME,\r\n      allowNull: true,\r\n    },\r\n    hora_salida: {\r\n      type: DataTypes.TIME,\r\n      allowNull: true,\r\n    },\r\n    tipo_acceso: {\r\n      type: DataTypes.STRING(20),\r\n      allowNull: false,\r\n    },\r\n  },\r\n  {\r\n    tableName: 'Registro_Acceso',\r\n    timestamps: false,\r\n    underscored: true,\r\n  }\r\n);\r\n\r\nmodule.exports = Registro_Acceso;\r\n\r\n"
+        }
+    ]
+}

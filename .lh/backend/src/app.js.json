@@ -1,0 +1,30 @@
+{
+    "sourceFile": "backend/src/app.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 3,
+            "patches": [
+                {
+                    "date": 1763845104542,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1763849579402,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -17,8 +17,9 @@\n });\r\n \r\n // Routes\r\n app.use('/api/auth', authRoutes);\r\n+app.use('/api/areas', require('./routes/areas.routes'));\r\n \r\n // 404 handler\r\n app.use((req, res) => {\r\n   res.status(404).json({\r\n"
+                },
+                {
+                    "date": 1763851743028,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,8 +18,9 @@\n \r\n // Routes\r\n app.use('/api/auth', authRoutes);\r\n app.use('/api/areas', require('./routes/areas.routes'));\r\n+app.use('/api/registro', require('./routes/registro.routes'));\r\n \r\n // 404 handler\r\n app.use((req, res) => {\r\n   res.status(404).json({\r\n"
+                },
+                {
+                    "date": 1763916972673,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -19,9 +19,17 @@\n // Routes\r\n app.use('/api/auth', authRoutes);\r\n app.use('/api/areas', require('./routes/areas.routes'));\r\n app.use('/api/registro', require('./routes/registro.routes'));\r\n+app.use('/api/visitantes', require('./routes/visitantes.routes'));\r\n+app.use('/api/roles', require('./routes/roles.routes'));\r\n+app.use('/api/instructor', require('./routes/instructor.routes'));\r\n+app.use('/api/admin', require('./routes/admin.routes'));\r\n+app.use('/api/guarda', require('./routes/guarda.routes'));\r\n+app.use('/api/importacion', require('./routes/importacion.routes'));\r\n \r\n+\r\n+\r\n // 404 handler\r\n app.use((req, res) => {\r\n   res.status(404).json({\r\n     error: 'Ruta no encontrada',\r\n"
+                }
+            ],
+            "date": 1763845104542,
+            "name": "Commit-0",
+            "content": "const express = require('express');\r\nconst cors = require('cors');\r\nrequire('dotenv').config();\r\n\r\nconst authRoutes = require('./routes/auth.routes');\r\n\r\nconst app = express();\r\n\r\n// Middlewares\r\napp.use(cors());\r\napp.use(express.json());\r\napp.use(express.urlencoded({ extended: true }));\r\n\r\n// Health check\r\napp.get('/health', (req, res) => {\r\n  res.json({ status: 'ok', message: 'Server is running' });\r\n});\r\n\r\n// Routes\r\napp.use('/api/auth', authRoutes);\r\n\r\n// 404 handler\r\napp.use((req, res) => {\r\n  res.status(404).json({\r\n    error: 'Ruta no encontrada',\r\n    path: req.originalUrl,\r\n  });\r\n});\r\n\r\n// Error handler\r\napp.use((err, req, res, next) => {\r\n  console.error('Error:', err);\r\n  res.status(err.status || 500).json({\r\n    error: err.message || 'Error interno del servidor',\r\n  });\r\n});\r\n\r\nmodule.exports = app;\r\n\r\n"
+        }
+    ]
+}

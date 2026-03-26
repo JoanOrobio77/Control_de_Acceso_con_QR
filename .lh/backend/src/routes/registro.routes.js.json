@@ -1,0 +1,18 @@
+{
+    "sourceFile": "backend/src/routes/registro.routes.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1763851743006,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1763851743006,
+            "name": "Commit-0",
+            "content": "const express = require('express');\r\nconst router = express.Router();\r\nconst registroController = require('../controllers/registroController');\r\nconst { authenticate } = require('../middlewares/auth.middleware');\r\nconst { allowRoles } = require('../middlewares/role.middleware');\r\nconst { validateScan, validateManual, validateList } = require('../validators/registro.validator');\r\n\r\n/**\r\n * POST /api/registro/scan\r\n * Escanear QR para registrar entrada/salida\r\n * Permitido para: guarda, administrador\r\n */\r\nrouter.post('/scan', authenticate, allowRoles(['guarda', 'administrador']), validateScan, registroController.scanQR);\r\n\r\n/**\r\n * POST /api/registro/manual\r\n * Registro manual por identificación\r\n * Permitido para: guarda, administrador\r\n */\r\nrouter.post('/manual', authenticate, allowRoles(['guarda', 'administrador']), validateManual, registroController.registroManual);\r\n\r\n/**\r\n * GET /api/registro\r\n * Listar registros con filtros y paginación\r\n * Permitido para: administrador, instructor, guarda\r\n */\r\nrouter.get('/', authenticate, allowRoles(['administrador', 'instructor', 'guarda']), validateList, registroController.listarRegistros);\r\n\r\n/**\r\n * GET /api/registro/last/:usuarioId\r\n * Obtener último estado de un usuario\r\n * Permitido para: administrador, instructor, guarda\r\n */\r\nrouter.get('/last/:usuarioId', authenticate, allowRoles(['administrador', 'instructor', 'guarda']), registroController.obtenerUltimoEstado);\r\n\r\nmodule.exports = router;\r\n\r\n"
+        }
+    ]
+}

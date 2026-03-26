@@ -1,0 +1,22 @@
+{
+    "sourceFile": "backend/src/models/Usuarios.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1763843472635,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1763845104597,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -29,8 +29,12 @@\n     rh: {\r\n       type: DataTypes.STRING(5),\r\n       allowNull: true,\r\n     },\r\n+    password: {\r\n+      type: DataTypes.STRING(255),\r\n+      allowNull: true,\r\n+    },\r\n     id_ficha: {\r\n       type: DataTypes.INTEGER,\r\n       allowNull: true,\r\n       references: {\r\n"
+                }
+            ],
+            "date": 1763843472635,
+            "name": "Commit-0",
+            "content": "const { DataTypes } = require('sequelize');\r\nconst sequelize = require('../config/db');\r\n\r\nconst Usuarios = sequelize.define(\r\n  'Usuarios',\r\n  {\r\n    id_usuario: {\r\n      type: DataTypes.INTEGER,\r\n      primaryKey: true,\r\n      autoIncrement: true,\r\n    },\r\n    nombre: {\r\n      type: DataTypes.STRING(100),\r\n      allowNull: false,\r\n    },\r\n    identificacion: {\r\n      type: DataTypes.STRING(20),\r\n      allowNull: false,\r\n      unique: true,\r\n    },\r\n    telefono: {\r\n      type: DataTypes.STRING(15),\r\n      allowNull: true,\r\n    },\r\n    correo: {\r\n      type: DataTypes.STRING(100),\r\n      allowNull: true,\r\n    },\r\n    rh: {\r\n      type: DataTypes.STRING(5),\r\n      allowNull: true,\r\n    },\r\n    id_ficha: {\r\n      type: DataTypes.INTEGER,\r\n      allowNull: true,\r\n      references: {\r\n        model: 'Ficha',\r\n        key: 'id_ficha',\r\n      },\r\n    },\r\n    id_rol: {\r\n      type: DataTypes.INTEGER,\r\n      allowNull: false,\r\n      references: {\r\n        model: 'Roles',\r\n        key: 'id_rol',\r\n      },\r\n    },\r\n  },\r\n  {\r\n    tableName: 'Usuarios',\r\n    timestamps: false,\r\n    underscored: true,\r\n  }\r\n);\r\n\r\nmodule.exports = Usuarios;\r\n\r\n"
+        }
+    ]
+}

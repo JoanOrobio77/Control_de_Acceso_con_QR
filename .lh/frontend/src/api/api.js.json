@@ -1,0 +1,22 @@
+{
+    "sourceFile": "frontend/src/api/api.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1763919582400,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1763921261136,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,7 +7,38 @@\n     'Content-Type': 'application/json',\r\n   },\r\n });\r\n \r\n+// Interceptor para agregar token de autenticación a las peticiones\r\n+API.interceptors.request.use(\r\n+  (config) => {\r\n+    const token = localStorage.getItem('token');\r\n+    if (token) {\r\n+      config.headers.Authorization = `Bearer ${token}`;\r\n+    }\r\n+    return config;\r\n+  },\r\n+  (error) => {\r\n+    return Promise.reject(error);\r\n+  }\r\n+);\r\n+\r\n+// Interceptor para manejar errores de respuesta\r\n+API.interceptors.response.use(\r\n+  (response) => response,\r\n+  (error) => {\r\n+    if (error.response?.status === 401) {\r\n+      // Token expirado o inválido\r\n+      localStorage.removeItem('token');\r\n+      localStorage.removeItem('user');\r\n+      // Redirigir al login si es necesario\r\n+      if (window.location.pathname !== '/login') {\r\n+        window.location.href = '/login';\r\n+      }\r\n+    }\r\n+    return Promise.reject(error);\r\n+  }\r\n+);\r\n+\r\n export default API;\r\n \r\n \r\n"
+                }
+            ],
+            "date": 1763919582400,
+            "name": "Commit-0",
+            "content": "import axios from 'axios';\r\n\r\nconst API = axios.create({\r\n  baseURL: 'http://localhost:4000/api', // cambia el puerto si tu backend usa otro\r\n  withCredentials: true,\r\n  headers: {\r\n    'Content-Type': 'application/json',\r\n  },\r\n});\r\n\r\nexport default API;\r\n\r\n\r\n"
+        }
+    ]
+}

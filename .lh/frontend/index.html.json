@@ -1,0 +1,18 @@
+{
+    "sourceFile": "frontend/index.html",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1763947164549,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1763947164549,
+            "name": "Commit-0",
+            "content": "<!DOCTYPE html>\r\n<html lang=\"en\">\r\n  <head>\r\n    <meta charset=\"UTF-8\" />\r\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\r\n    <title>Access Control App Design</title>\r\n  </head>\r\n\r\n  <body>\r\n    <div id=\"root\"></div>\r\n    <script type=\"module\" src=\"/src/main.tsx\"></script>\r\n  </body>\r\n</html>\r\n\r\n\r\n"
+        }
+    ]
+}

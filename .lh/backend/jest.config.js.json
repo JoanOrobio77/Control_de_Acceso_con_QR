@@ -1,0 +1,18 @@
+{
+    "sourceFile": "backend/jest.config.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1763845104543,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1763845104543,
+            "name": "Commit-0",
+            "content": "module.exports = {\r\n  testEnvironment: 'node',\r\n  testMatch: ['**/tests/**/*.test.js'],\r\n  collectCoverageFrom: [\r\n    'src/**/*.js',\r\n    '!src/config/**',\r\n    '!src/models/index.js',\r\n  ],\r\n  coverageDirectory: 'coverage',\r\n  verbose: true,\r\n};\r\n\r\n"
+        }
+    ]
+}

@@ -1,0 +1,18 @@
+{
+    "sourceFile": "backend/src/controllers/auth.controller.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1763844402616,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1763844402615,
+            "name": "Commit-0",
+            "content": "const authService = require('../services/auth.service');\r\nconst { signToken } = require('../utils/jwt');\r\n\r\n/**\r\n * Registro de administrador\r\n * POST /api/auth/register-admin\r\n */\r\nconst registerAdmin = async (req, res) => {\r\n  try {\r\n    const { nombre, correo, password, identificacion } = req.body;\r\n\r\n    // Registrar administrador\r\n    const user = await authService.registerAdmin({\r\n      nombre,\r\n      correo,\r\n      password,\r\n      identificacion,\r\n    });\r\n\r\n    res.status(201).json({\r\n      user,\r\n    });\r\n  } catch (error) {\r\n    const statusCode = error.statusCode || 500;\r\n    res.status(statusCode).json({\r\n      error: error.message || 'Error al registrar administrador',\r\n    });\r\n  }\r\n};\r\n\r\n/**\r\n * Login de usuario\r\n * POST /api/auth/login\r\n */\r\nconst login = async (req, res) => {\r\n  try {\r\n    const { correo, password } = req.body;\r\n\r\n    // Autenticar usuario\r\n    const user = await authService.login(correo, password);\r\n\r\n    // Generar token JWT\r\n    const token = signToken({\r\n      id_usuario: user.id_usuario,\r\n      nombre: user.nombre,\r\n      id_rol: user.id_rol,\r\n    });\r\n\r\n    res.status(200).json({\r\n      token,\r\n      user,\r\n    });\r\n  } catch (error) {\r\n    const statusCode = error.statusCode || 500;\r\n    res.status(statusCode).json({\r\n      error: error.message || 'Error al iniciar sesión',\r\n    });\r\n  }\r\n};\r\n\r\n/**\r\n * Obtener información del usuario autenticado\r\n * GET /api/auth/me\r\n */\r\nconst getMe = async (req, res) => {\r\n  try {\r\n    // El usuario ya está en req.user gracias al middleware authenticate\r\n    res.status(200).json({\r\n      user: req.user,\r\n    });\r\n  } catch (error) {\r\n    res.status(500).json({\r\n      error: 'Error al obtener información del usuario',\r\n    });\r\n  }\r\n};\r\n\r\nmodule.exports = {\r\n  registerAdmin,\r\n  login,\r\n  getMe,\r\n};\r\n\r\n"
+        }
+    ]
+}

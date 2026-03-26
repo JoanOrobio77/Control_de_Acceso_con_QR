@@ -1,0 +1,18 @@
+{
+    "sourceFile": "backend/package.json",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1763845104543,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1763845104543,
+            "name": "Commit-0",
+            "content": "{\r\n  \"name\": \"control-acceso-backend\",\r\n  \"version\": \"1.0.0\",\r\n  \"description\": \"Backend API para sistema de control de acceso\",\r\n  \"main\": \"server.js\",\r\n  \"scripts\": {\r\n    \"start\": \"node server.js\",\r\n    \"dev\": \"nodemon server.js\",\r\n    \"test\": \"jest\"\r\n  },\r\n  \"dependencies\": {\r\n    \"bcrypt\": \"^6.0.0\",\r\n    \"cors\": \"^2.8.5\",\r\n    \"dotenv\": \"^17.2.3\",\r\n    \"express\": \"^5.1.0\",\r\n    \"express-validator\": \"^7.3.1\",\r\n    \"jsonwebtoken\": \"^9.0.2\",\r\n    \"mysql2\": \"^3.15.3\",\r\n    \"sequelize\": \"^6.37.7\"\r\n  },\r\n  \"devDependencies\": {\r\n    \"jest\": \"^30.2.0\",\r\n    \"nodemon\": \"^3.1.11\",\r\n    \"supertest\": \"^7.1.4\"\r\n  },\r\n  \"keywords\": [],\r\n  \"author\": \"\",\r\n  \"license\": \"ISC\"\r\n}\r\n\r\n"
+        }
+    ]
+}

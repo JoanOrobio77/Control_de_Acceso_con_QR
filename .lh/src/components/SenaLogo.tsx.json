@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/components/SenaLogo.tsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1763852402891,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1763852402891,
+            "name": "Commit-0",
+            "content": "import React from 'react';\nimport logoSena from 'figma:asset/9a182b417e937bc30ea5a4eac71ade0b3a5e6697.png';\n\ninterface SenaLogoProps {\n  size?: 'sm' | 'md' | 'lg' | 'xl' | '2xl';\n  className?: string;\n  opacity?: number;\n  variant?: 'default' | 'black' | 'white';\n}\n\nexport function SenaLogo({ size = 'md', className = '', opacity = 1, variant = 'default' }: SenaLogoProps) {\n  const sizeMap = {\n    'sm': 'w-8 h-8',\n    'md': 'w-12 h-12',\n    'lg': 'w-16 h-16',\n    'xl': 'w-24 h-24',\n    '2xl': 'w-32 h-32'\n  };\n\n  // Aplicar fondo blanco para variante white\n  const bgClass = variant === 'white' ? 'bg-white rounded-lg p-1.5' : '';\n\n  return (\n    <div className={`${sizeMap[size]} ${bgClass} ${className} flex items-center justify-center`} style={{ opacity }}>\n      <img\n        src={logoSena}\n        alt=\"Logo SENA\"\n        className=\"w-full h-full object-contain\"\n      />\n    </div>\n  );\n}"
+        }
+    ]
+}

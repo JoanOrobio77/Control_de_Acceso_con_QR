@@ -1,0 +1,18 @@
+{
+    "sourceFile": "backend/server.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1763845104543,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1763845104543,
+            "name": "Commit-0",
+            "content": "require('dotenv').config();\r\nconst app = require('./src/app');\r\nconst { sequelize } = require('./src/models');\r\n\r\nconst PORT = process.env.PORT || 3000;\r\n\r\n// Sincronizar base de datos y luego iniciar servidor\r\nconst startServer = async () => {\r\n  try {\r\n    // Probar conexión a la base de datos\r\n    await sequelize.authenticate();\r\n    console.log('✓ Conexión a la base de datos establecida');\r\n\r\n    // Sincronizar modelos (no forzar recreación)\r\n    // await sequelize.sync({ alter: false });\r\n    // console.log('✓ Modelos sincronizados');\r\n\r\n    // Iniciar servidor\r\n    app.listen(PORT, () => {\r\n      console.log(`✓ Servidor corriendo en http://localhost:${PORT}`);\r\n      console.log(`✓ Ambiente: ${process.env.NODE_ENV || 'development'}`);\r\n    });\r\n  } catch (error) {\r\n    console.error('✗ Error al iniciar servidor:', error);\r\n    process.exit(1);\r\n  }\r\n};\r\n\r\nstartServer();\r\n\r\n"
+        }
+    ]
+}

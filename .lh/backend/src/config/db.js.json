@@ -1,0 +1,18 @@
+{
+    "sourceFile": "backend/src/config/db.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1763839814132,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1763839814132,
+            "name": "Commit-0",
+            "content": "const { Sequelize } = require('sequelize');\r\n\r\nrequire('dotenv').config();\r\n\r\nconst sequelize = new Sequelize(\r\n  process.env.DB_NAME || 'controlAcceso',\r\n  process.env.DB_USER || 'root',\r\n  process.env.DB_PASSWORD || '',\r\n  {\r\n    host: process.env.DB_HOST || 'localhost',\r\n    port: process.env.DB_PORT || 3306,\r\n    dialect: 'mysql',\r\n    logging: false,\r\n  }\r\n);\r\n\r\nmodule.exports = sequelize;\r\n\r\n"
+        }
+    ]
+}

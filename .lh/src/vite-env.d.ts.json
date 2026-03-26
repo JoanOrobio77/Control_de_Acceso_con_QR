@@ -1,0 +1,22 @@
+{
+    "sourceFile": "src/vite-env.d.ts",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1763852402851,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1763852559477,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,37 +1,8 @@\n /// <reference types=\"vite/client\" />\r\n \r\n-declare module '*.png' {\r\n-  const src: string;\r\n-  export default src;\r\n-}\r\n-\r\n-declare module '*.jpg' {\r\n-  const src: string;\r\n-  export default src;\r\n-}\r\n-\r\n-declare module '*.jpeg' {\r\n-  const src: string;\r\n-  export default src;\r\n-}\r\n-\r\n-declare module '*.svg' {\r\n-  const src: string;\r\n-  export default src;\r\n-}\r\n-\r\n-declare module '*.gif' {\r\n-  const src: string;\r\n-  export default src;\r\n-}\r\n-\r\n-declare module '*.webp' {\r\n-  const src: string;\r\n-  export default src;\r\n-}\r\n-\r\n+// Vite already includes declarations for *.png, *.jpg, *.jpeg, *.svg, *.gif, *.webp\r\n+// Only declare the custom Figma asset alias\r\n declare module 'figma:asset/*' {\r\n   const src: string;\r\n   export default src;\r\n }\r\n-\r\n"
+                }
+            ],
+            "date": 1763852402851,
+            "name": "Commit-0",
+            "content": "/// <reference types=\"vite/client\" />\r\n\r\ndeclare module '*.png' {\r\n  const src: string;\r\n  export default src;\r\n}\r\n\r\ndeclare module '*.jpg' {\r\n  const src: string;\r\n  export default src;\r\n}\r\n\r\ndeclare module '*.jpeg' {\r\n  const src: string;\r\n  export default src;\r\n}\r\n\r\ndeclare module '*.svg' {\r\n  const src: string;\r\n  export default src;\r\n}\r\n\r\ndeclare module '*.gif' {\r\n  const src: string;\r\n  export default src;\r\n}\r\n\r\ndeclare module '*.webp' {\r\n  const src: string;\r\n  export default src;\r\n}\r\n\r\ndeclare module 'figma:asset/*' {\r\n  const src: string;\r\n  export default src;\r\n}\r\n\r\n"
+        }
+    ]
+}

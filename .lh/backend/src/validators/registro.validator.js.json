@@ -1,0 +1,18 @@
+{
+    "sourceFile": "backend/src/validators/registro.validator.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1763851743008,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1763851743008,
+            "name": "Commit-0",
+            "content": "const { body, query, validationResult } = require('express-validator');\r\n\r\n/**\r\n * Middleware para manejar errores de validación\r\n */\r\nconst handleValidationErrors = (req, res, next) => {\r\n  const errors = validationResult(req);\r\n  if (!errors.isEmpty()) {\r\n    return res.status(400).json({\r\n      error: 'Errores de validación',\r\n      details: errors.array(),\r\n    });\r\n  }\r\n  next();\r\n};\r\n\r\n/**\r\n * Validaciones para scan QR\r\n */\r\nconst validateScan = [\r\n  body('qr')\r\n    .notEmpty()\r\n    .withMessage('El código QR es requerido')\r\n    .isString()\r\n    .withMessage('El código QR debe ser una cadena de texto'),\r\n  body('tipo')\r\n    .optional()\r\n    .isIn(['entrada', 'salida'])\r\n    .withMessage('El tipo debe ser \"entrada\" o \"salida\"'),\r\n  body('areaId')\r\n    .optional()\r\n    .isInt()\r\n    .withMessage('El ID del área debe ser un número entero'),\r\n  handleValidationErrors,\r\n];\r\n\r\n/**\r\n * Validaciones para registro manual\r\n */\r\nconst validateManual = [\r\n  body('identificacion')\r\n    .notEmpty()\r\n    .withMessage('La identificación es requerida')\r\n    .isString()\r\n    .withMessage('La identificación debe ser una cadena de texto')\r\n    .isLength({ min: 5, max: 20 })\r\n    .withMessage('La identificación debe tener entre 5 y 20 caracteres'),\r\n  body('tipo')\r\n    .optional()\r\n    .isIn(['entrada', 'salida'])\r\n    .withMessage('El tipo debe ser \"entrada\" o \"salida\"'),\r\n  body('areaId')\r\n    .optional()\r\n    .isInt()\r\n    .withMessage('El ID del área debe ser un número entero'),\r\n  body('descripcion')\r\n    .optional()\r\n    .isString()\r\n    .withMessage('La descripción debe ser una cadena de texto'),\r\n  handleValidationErrors,\r\n];\r\n\r\n/**\r\n * Validaciones para listar registros (query params)\r\n */\r\nconst validateList = [\r\n  query('userId')\r\n    .optional()\r\n    .isInt()\r\n    .withMessage('El ID del usuario debe ser un número entero'),\r\n  query('areaId')\r\n    .optional()\r\n    .isInt()\r\n    .withMessage('El ID del área debe ser un número entero'),\r\n  query('tipo')\r\n    .optional()\r\n    .isIn(['entrada', 'salida'])\r\n    .withMessage('El tipo debe ser \"entrada\" o \"salida\"'),\r\n  query('fechaDesde')\r\n    .optional()\r\n    .isISO8601()\r\n    .withMessage('La fecha desde debe ser una fecha válida (ISO 8601)'),\r\n  query('fechaHasta')\r\n    .optional()\r\n    .isISO8601()\r\n    .withMessage('La fecha hasta debe ser una fecha válida (ISO 8601)'),\r\n  query('page')\r\n    .optional()\r\n    .isInt({ min: 1 })\r\n    .withMessage('La página debe ser un número entero mayor a 0'),\r\n  query('size')\r\n    .optional()\r\n    .isInt({ min: 1, max: 100 })\r\n    .withMessage('El tamaño debe ser un número entre 1 y 100'),\r\n  handleValidationErrors,\r\n];\r\n\r\nmodule.exports = {\r\n  validateScan,\r\n  validateManual,\r\n  validateList,\r\n};\r\n\r\n"
+        }
+    ]
+}
