@@ -7,8 +7,8 @@
 
 Un sistema completo de control de acceso diseñado para instituciones educativas, con gestión de usuarios, registros de acceso y paneles administrativos.
 
+<img width="1374" height="773" alt="image" src="https://github.com/user-attachments/assets/d001f8dd-6ec9-41a5-9413-42f0c2953544" />
 <img width="1802" height="801" alt="image" src="https://github.com/user-attachments/assets/1bec1524-c54e-4149-a0b0-ddddf200fef3" />
-<img width="1802" height="801" alt="image" src="https://github.com/user-attachments/assets/be72233a-b60a-4c6b-80ce-da7d4c0936d0" />
 <img width="1880" height="810" alt="image" src="https://github.com/user-attachments/assets/cc3262d9-1a94-4d16-a05b-7a6ed5b7a6a8" />
 
 
