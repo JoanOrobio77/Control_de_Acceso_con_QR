@@ -204,12 +204,14 @@ Este proyecto está bajo la Licencia ISC. Ver el archivo `LICENSE` para más det
 ## 👥 Autores
 
 - **Tu Nombre** - *Joan Orobio* - [tu-github](https://github.com/JoanOrobio77)
+- Para mas info contacta al 3128540710
 
 ## 🙏 Agradecimientos
 
 - Radix UI por los componentes primitivos
 - La comunidad de React por la inspiración
 - Todos los contribuidores del proyecto
+
 
 ---
 
